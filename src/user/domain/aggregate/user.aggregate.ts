@@ -37,6 +37,22 @@ export class User extends AggregateRoot<UserIdVo> {
         throw new InvalidUserException();
     }
 
+    updateName(name: UserNameVo) {
+        this.name = name;
+    }
+
+    updateEmail(email: UserEmailVo) {
+        this.email = email;
+    }
+
+    updatePhone(phone: UserPhoneVo) {
+        this.phone = phone;
+    }
+
+    updateRole(role: UserRoleVo) {
+        this.role = role;
+    }
+
     static create(id: UserIdVo, name: UserNameVo, email: UserEmailVo, phone: UserPhoneVo, role: UserRoleVo): User {
         return new User(id, name, email, phone, role);
     }

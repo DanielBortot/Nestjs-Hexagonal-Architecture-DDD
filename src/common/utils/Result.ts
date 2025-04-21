@@ -28,11 +28,11 @@ export class Result<T> {
         return this.error;
     }
 
-    public success(value: T): Result<T> {
+    public static success<T>(value: T): Result<T> {
         return new Result<T>(value, undefined);
     }
 
-    public fail(error: BaseException): Result<T> {
+    public static fail<T>(error: BaseException): Result<T> {
         return new Result<T>(undefined, error);
     }
 }

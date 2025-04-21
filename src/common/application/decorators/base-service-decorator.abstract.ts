@@ -9,5 +9,5 @@ export abstract class BaseServiceDecorator<I,O> extends IService<I,O> {
         this.service = service;
     }
 
-    public abstract execute(value: I): Result<O>;
+    public abstract execute(value: I): Promise<Result<O>>;
 }
