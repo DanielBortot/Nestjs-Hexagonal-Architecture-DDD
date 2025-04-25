@@ -6,9 +6,16 @@ import { InfraestructureExceptionFilter } from './common/infraestructure/error-f
 import { NotRegisteredExceptionFilter } from './common/infraestructure/error-filters/not-registered-exception.filter';
 import { setupSwagger } from './common/infraestructure/framework-config/swagger-config/swagger-config';
 import { setupCors } from './common/infraestructure/framework-config/cors-config/cors-config';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  app.useGlobalPipes(new ValidationPipe({
+    whitelist: true,
+    forbidNonWhitelisted: true,
+    transform: true
+  }));
 
   app.useGlobalFilters(
     new DomainExceptionFilter(), 

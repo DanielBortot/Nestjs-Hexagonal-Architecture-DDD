@@ -15,9 +15,9 @@ export class LoggerDecorator<I,O> extends BaseServiceDecorator<I,O> {
         this.timer = timer;
     }
 
-    public execute(value: I): Result<O> {
+    async execute(value: I): Promise<Result<O>> {
         const beginingTime = this.timer.setTime();
-        const data = this.service.execute(value);
+        const data = await this.service.execute(value);
         const endingTime = this.timer.setTime();
         const time = this.timer.getTime(beginingTime, endingTime);
 

@@ -8,9 +8,9 @@ export class ExceptionDecorator<I,O> extends BaseServiceDecorator<I,O> {
         super(service);
     }
 
-    public execute(value: I): Result<O> {
+    async execute(value: I): Promise<Result<O>> {
         try {
-            const response = this.service.execute(value);
+            const response = await this.service.execute(value);
             if (response.isError) throw response.Error;
             return response;
         } catch (err) {
