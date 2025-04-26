@@ -1,2 +1,22 @@
 services:
-  
+  database:
+    image: postgres:latest
+    container_name: postgres-template
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-template-vol:/var/lib/postgresql/data
+    networks:
+      - app-template-net
+
+
+networks:
+  app-template-net:
+    driver: bridge
+
+volumes:
+  postgres-template-vol:
