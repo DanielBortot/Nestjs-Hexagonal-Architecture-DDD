@@ -1,4 +1,4 @@
-import { ValueObjectRoot } from "src/common/domain/value-object/value-object-root.abstract";
+import { ValueObjectRoot } from "src/common/domain";
 import { InvalidUserPhoneException } from "../domain-exceptions/invalid-user-phone.exception";
 
 export class UserPhoneVo extends ValueObjectRoot<UserPhoneVo> {

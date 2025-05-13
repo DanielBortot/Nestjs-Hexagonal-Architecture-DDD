@@ -1,3 +1,5 @@
+# name: Test API
+
 on:
   - push
   - pull_request

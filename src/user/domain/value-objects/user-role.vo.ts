@@ -1,4 +1,4 @@
-import { ValueObjectRoot } from "src/common/domain/value-object/value-object-root.abstract";
+import { ValueObjectRoot } from "src/common/domain";
 import { InvalidUserRoleException } from "../domain-exceptions/invalid-user-role.exception";
 import { UserRoleEnum } from "../enums/role.enum";
 

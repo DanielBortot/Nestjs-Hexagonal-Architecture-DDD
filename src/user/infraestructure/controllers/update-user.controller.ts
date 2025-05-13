@@ -1,16 +1,16 @@
 import { Body, Controller, Patch } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 import { UpdateUserRequestInfDto } from "../dto/request/update-user-request-inf.dto";
-import { PgDatabaseSingleton } from "src/common/infraestructure/database/postgres/postgres-database.singleton";
-import { NestLogger } from "src/common/infraestructure/logger/nest-logger";
-import { TimerTimestamp } from "src/common/infraestructure/timer/timer-timestamp";
+import { PgDatabaseSingleton } from "src/common/infraestructure";
+import { NestLogger } from "src/common/infraestructure";
+import { TimerTimestamp } from "src/common/infraestructure";
 import { OrmUserQueryRepository } from "../repositories/orm-repository/query/orm-user-query.repository";
-import { IService } from "src/common/application/service/service.abstract";
+import { IService } from "src/common/application";
 import { UpdateUserRequestDto } from "src/user/application/dto/request/update-user-request.dto";
-import { ExceptionDecorator } from "src/common/application/aspects/exception-decorator/exception-decorator";
-import { LoggerDecorator } from "src/common/application/aspects/logger-decorator/logger-decorator";
+import { LoggerDecorator } from "src/common/application";
 import { UpdateUserService } from "src/user/application/services/update-user.service";
 import { OrmUserCommandRepository } from "../repositories/orm-repository/command/orm-user-command.repository";
+import { ExceptionDecorator } from "src/common/application";
 
 @ApiTags("User")
 @Controller("user")

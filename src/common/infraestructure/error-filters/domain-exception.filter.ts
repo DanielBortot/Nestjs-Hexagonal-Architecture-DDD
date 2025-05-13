@@ -1,5 +1,5 @@
 import { ArgumentsHost, Catch, ExceptionFilter, HttpStatus } from "@nestjs/common";
-import { DomainException } from "src/common/domain/domain-exception/domain-exception";
+import { DomainException } from "src/common/domain";
 import { CustomError } from "src/common/utils/CustomError";
 
 @Catch(DomainException)

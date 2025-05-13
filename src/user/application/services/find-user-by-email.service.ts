@@ -1,4 +1,4 @@
-import { IService } from "src/common/application/service/service.abstract";
+import { IService } from "src/common/application";
 import { FindUserByEmailRequestDto } from "../dto/request/find-user-by-email-request.dto";
 import { FindUserByEmailResponseDto } from "../dto/response/find-user-by-email-response.dto";
 import { Result } from "src/common/utils/Result";

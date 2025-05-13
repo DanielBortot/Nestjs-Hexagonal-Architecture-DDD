@@ -1,4 +1,4 @@
-import { IService } from "src/common/application/service/service.abstract";
+import { IService } from "src/common/application";
 import { UpdateUserRequestDto } from "../dto/request/update-user-request.dto";
 import { Result } from "src/common/utils/Result";
 import { IOrmUserQueryRepository } from "../repositories/query/orm-user-query-repository.interface";

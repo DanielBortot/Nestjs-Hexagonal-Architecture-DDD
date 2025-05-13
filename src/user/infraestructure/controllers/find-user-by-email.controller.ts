@@ -1,15 +1,15 @@
 import { Controller, Get, Query } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
-import { ExceptionDecorator } from "src/common/application/aspects/exception-decorator/exception-decorator";
-import { LoggerDecorator } from "src/common/application/aspects/logger-decorator/logger-decorator";
+import { LoggerDecorator } from "src/common/application";
 import { FindUserByEmailService } from "src/user/application/services/find-user-by-email.service";
-import { PgDatabaseSingleton } from "src/common/infraestructure/database/postgres/postgres-database.singleton";
+import { PgDatabaseSingleton } from "src/common/infraestructure";
 import { OrmUserQueryRepository } from "../repositories/orm-repository/query/orm-user-query.repository";
-import { IService } from "src/common/application/service/service.abstract";
+import { IService } from "src/common/application";
 import { FindUserByEmailRequestDto } from "src/user/application/dto/request/find-user-by-email-request.dto";
 import { FindUserByEmailResponseDto } from "src/user/application/dto/response/find-user-by-email-response.dto";
-import { NestLogger } from "src/common/infraestructure/logger/nest-logger";
-import { TimerTimestamp } from "src/common/infraestructure/timer/timer-timestamp";
+import { NestLogger } from "src/common/infraestructure";
+import { TimerTimestamp } from "src/common/infraestructure";
+import { ExceptionDecorator } from "src/common/application";
 
 @ApiTags("User")
 @Controller("user")

@@ -1,11 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { DomainExceptionFilter } from './common/infraestructure/error-filters/domain-exception.filter';
-import { ApplicationExceptionFilter } from './common/infraestructure/error-filters/application-exception.filter';
-import { InfraestructureExceptionFilter } from './common/infraestructure/error-filters/infraestructure-exception.filter';
-import { NotRegisteredExceptionFilter } from './common/infraestructure/error-filters/not-registered-exception.filter';
-import { setupSwagger } from './common/infraestructure/framework-config/swagger-config/swagger-config';
-import { setupCors } from './common/infraestructure/framework-config/cors-config/cors-config';
+import { DomainExceptionFilter } from './common/infraestructure';
+import { ApplicationExceptionFilter } from './common/infraestructure';
+import { InfraestructureExceptionFilter } from './common/infraestructure';
+import { NotRegisteredExceptionFilter } from './common/infraestructure';
+import { setupSwagger } from './common/infraestructure';
+import { setupCors } from './common/infraestructure';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {

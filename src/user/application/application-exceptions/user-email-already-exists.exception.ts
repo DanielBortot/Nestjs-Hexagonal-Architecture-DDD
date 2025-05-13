@@ -1,4 +1,4 @@
-import { ApplicationException } from "src/common/application/application-exception/application-exception";
+import { ApplicationException } from "src/common/application";
 
 export class UserEmailAlreadyExistsException extends ApplicationException {
     constructor(email: string) {

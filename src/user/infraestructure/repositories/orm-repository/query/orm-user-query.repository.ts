@@ -1,4 +1,4 @@
-import { InfraestructureException } from "src/common/infraestructure/infraestructure-exception/infraestructure-exception";
+import { InfraestructureException } from "src/common/infraestructure";
 import { Result } from "src/common/utils/Result";
 import { UserModel } from "src/user/application/models/user-model.type";
 import { IOrmUserQueryRepository } from "src/user/application/repositories/query/orm-user-query-repository.interface";

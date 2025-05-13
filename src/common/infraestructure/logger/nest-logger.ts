@@ -1,5 +1,5 @@
 import { Logger } from "@nestjs/common";
-import { ILogger } from "src/common/application/logger/logger.interface";
+import { ILogger } from "src/common/application";
 
 export class NestLogger implements ILogger {
 

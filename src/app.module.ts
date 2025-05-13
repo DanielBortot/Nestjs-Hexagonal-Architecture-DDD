@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ormPgDatabaseProvider } from './common/infraestructure/providers/orm/orm-pg-database.provider';
+import { ormPgDatabaseProvider } from './common/infraestructure';
 
 @Module({
   imports: [],

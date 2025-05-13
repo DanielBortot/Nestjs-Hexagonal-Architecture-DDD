@@ -1,4 +1,4 @@
-import { ITimer } from "src/common/application/timer/timer.interface";
+import { ITimer } from "src/common/application";
 
 export class TimerTimestamp implements ITimer {
 

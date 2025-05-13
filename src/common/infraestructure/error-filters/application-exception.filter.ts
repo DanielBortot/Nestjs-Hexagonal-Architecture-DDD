@@ -1,5 +1,5 @@
 import { ArgumentsHost, Catch, ExceptionFilter, HttpStatus } from "@nestjs/common";
-import { ApplicationException } from "src/common/application/application-exception/application-exception";
+import { ApplicationException } from "src/common/application";
 import { CustomError } from "src/common/utils/CustomError";
 
 @Catch(ApplicationException)

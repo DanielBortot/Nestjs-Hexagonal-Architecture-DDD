@@ -1,6 +1,6 @@
-import { AggregateRoot } from "src/common/domain/aggregate/aggregate-root.abstract";
+import { AggregateRoot } from "src/common/domain";
 import { UserIdVo } from "../value-objects/user-id.vo";
-import { DomainEventRoot } from "src/common/domain/domain-event/domain-event-root.abstract";
+import { DomainEventRoot } from "src/common/domain";
 import { UserNameVo } from "../value-objects/user-name.vo";
 import { UserEmailVo } from "../value-objects/user-email.vo";
 import { UserPhoneVo } from "../value-objects/user-phone.vo";
