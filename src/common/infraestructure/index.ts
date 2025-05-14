@@ -6,6 +6,7 @@ export { NotRegisteredExceptionFilter } from "./error-filters/not-registered-exc
 export { setupCors } from "./framework-config/cors-config/cors-config";
 export { envs } from "./framework-config/envs-config/envs";
 export { setupSwagger } from "./framework-config/swagger-config/swagger-config";
+export { FileLogger } from "./framework-config/logger-config/logger-config";
 export { UuidGenerator } from "./id-generator/uuid-generator";
 export { InfraestructureException } from "./infraestructure-exception/infraestructure-exception";
 export { NestLogger } from "./logger/nest-logger";
