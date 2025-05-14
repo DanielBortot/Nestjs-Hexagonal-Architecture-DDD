@@ -8,7 +8,7 @@ export class NestLogger implements ILogger {
     }
     
     errorLog(serviceName: string, message: string, input: string, time: string, cause: string[]): void {
-        Logger.error(`Error execute: Error: ${message} -- Input: ${input} -- Time: ${time} -- StackTrace: ${cause}`, serviceName);
+        Logger.error(`Error execute: Error: ${message} -- Input: ${input} -- Time: ${time} -- StackTrace: ${cause}`, null, serviceName);
     }
     
 }
