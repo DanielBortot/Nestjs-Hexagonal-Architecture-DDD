@@ -53,7 +53,7 @@ export class FileLogger extends ConsoleLogger {
     }
 
     error(message: string, trace?: string, context?: string) {
-        super.error(message, trace, context);
+        super.error(message, context);
         this.writeToFile(LogLevel.ERROR, message, context);
     }
 
