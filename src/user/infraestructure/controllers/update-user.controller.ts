@@ -1,4 +1,4 @@
-import { Body, Controller, Patch } from "@nestjs/common";
+import { Body, Controller, Patch, UseGuards } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 import { UpdateUserRequestInfDto } from "../dto/request/update-user-request-inf.dto";
 import { PgDatabaseSingleton, NestLogger, TimerTimestamp } from "src/common/infraestructure";
@@ -7,6 +7,7 @@ import { IService, LoggerDecorator, ExceptionDecorator } from "src/common/applic
 import { UpdateUserRequestDto } from "src/user/application/dto/request/update-user-request.dto";
 import { UpdateUserService } from "src/user/application/services/update-user.service";
 import { OrmUserCommandRepository } from "../repositories/orm-repository/command/orm-user-command.repository";
+import { JwtAuthGuard } from "src/auth/infraestructure/guards/jwt.guard";
 
 @ApiTags("User")
 @Controller("user")
@@ -19,6 +20,7 @@ export class UpdateUserController {
 
     constructor() {}
 
+    @UseGuards(JwtAuthGuard)
     @Patch("")
     async updateUser(@Body() body: UpdateUserRequestInfDto) {
 

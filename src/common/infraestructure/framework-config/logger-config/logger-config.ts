@@ -20,7 +20,6 @@ export class FileLogger extends ConsoleLogger {
         });
 
         process.on('uncaughtException', (err) => {
-            console.log('hola global')
             this.error(`Uncaught Exception: ${err.message}`);
             this.writeToFile(LogLevel.ERROR, `Uncaught Exception - ${err.stack}`);
             process.exit(1);
