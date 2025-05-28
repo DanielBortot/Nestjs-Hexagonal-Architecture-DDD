@@ -9,8 +9,7 @@ import {
   InfraestructureExceptionFilter,
   NotRegisteredExceptionFilter,
 } from './common/infraestructure';
-import { Logger, ValidationPipe } from '@nestjs/common';
-import * as exec from 'child_process';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
