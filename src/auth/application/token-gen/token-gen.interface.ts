@@ -1,5 +1,5 @@
-import { Credentials } from "../credentials/credentials.model";
+import { Credentials } from '../credentials/credentials.model'
 
 export interface ITokenGen {
-    genToken(value: Credentials): Promise<string>;
+	genToken(value: Credentials): Promise<string>
 }

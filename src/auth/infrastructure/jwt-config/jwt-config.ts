@@ -1,7 +1,6 @@
-import { JwtModule } from "@nestjs/jwt"
+import { JwtModule } from '@nestjs/jwt'
 
-export const setupJwt = 
-    JwtModule.register({
-        secret: 'hola',
-        signOptions: { expiresIn: '8h' }
-    })
+export const setupJwt = JwtModule.register({
+	secret: 'hola',
+	signOptions: { expiresIn: '8h' },
+})

@@ -1,11 +1,11 @@
-import { IsString, IsNotEmpty, IsEmail } from "class-validator";
+import { IsString, IsNotEmpty, IsEmail } from 'class-validator'
 
 export class UserLoginRequestInfDto {
-    @IsNotEmpty()
-    @IsEmail()
-    email: string;
+	@IsNotEmpty()
+	@IsEmail()
+	email: string
 
-    @IsString()
-    @IsNotEmpty()
-    password: string;
+	@IsString()
+	@IsNotEmpty()
+	password: string
 }

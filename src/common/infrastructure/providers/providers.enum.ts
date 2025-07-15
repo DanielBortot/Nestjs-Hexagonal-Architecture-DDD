@@ -1,4 +1,4 @@
 export enum InfProvidersEnum {
-    OrmPgDataSource = "OrmPgDataSource",
-    JwtGen = "JwtGen"
+	OrmPgDataSource = 'OrmPgDataSource',
+	JwtGen = 'JwtGen',
 }

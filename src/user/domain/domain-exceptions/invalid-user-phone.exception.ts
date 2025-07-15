@@ -1,7 +1,7 @@
-import { DomainException } from "src/common/domain";
+import { DomainException } from 'src/common/domain'
 
 export class InvalidUserPhoneException extends DomainException {
-    constructor(phone: string) {
-        super(`Invalid user phone: ${phone}`);
-    }
+	constructor(phone: string) {
+		super(`Invalid user phone: ${phone}`)
+	}
 }

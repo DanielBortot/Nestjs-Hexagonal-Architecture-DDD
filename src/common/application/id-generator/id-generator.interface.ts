@@ -1,3 +1,3 @@
 export interface IIdGenerator {
-    generateId(): string;
+	generateId(): string
 }

@@ -1,6 +1,3 @@
 export class FindUserByEmailRequestDto {
-
-    constructor(
-        public email: string
-    ) {}
+	constructor(public email: string) {}
 }

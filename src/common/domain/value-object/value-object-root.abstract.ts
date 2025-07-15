@@ -1,5 +1,3 @@
 export abstract class ValueObjectRoot<T> {
-
-    abstract equals(value: T): boolean;
-    
+	abstract equals(value: T): boolean
 }

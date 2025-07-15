@@ -1,7 +1,7 @@
 export abstract class BaseRequest {
-    public userId: string;
+	public userId: string
 
-    constructor(userId: string) {
-        this.userId = userId;
-    }
+	constructor(userId: string) {
+		this.userId = userId
+	}
 }

@@ -1,7 +1,7 @@
-import { ApplicationException } from "src/common/application";
+import { ApplicationException } from 'src/common/application'
 
 export class UserInvalidCredentialsException extends ApplicationException {
-    constructor() {
-        super("Invalid user credentials");
-    }
+	constructor() {
+		super('Invalid user credentials')
+	}
 }
