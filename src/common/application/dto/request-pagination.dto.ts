@@ -5,10 +5,10 @@ export class RequestPaginationDto {
 	) {}
 
 	get Page(): number {
-		return this.page
+		return this.page;
 	}
 
 	get Perpage(): number {
-		return this.perpage
+		return this.perpage;
 	}
 }

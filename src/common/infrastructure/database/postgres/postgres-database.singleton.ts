@@ -1,20 +1,20 @@
-import { DataSource, getMetadataArgsStorage } from 'typeorm'
-import { envs } from '../../framework-config/envs-config/envs'
+import { DataSource, getMetadataArgsStorage } from "typeorm";
+import { envs } from "../../framework-config/envs-config/envs";
 
 export class PgDatabaseSingleton {
-	static instance: DataSource
+	static instance: DataSource;
 
 	static getInstance(): DataSource {
 		if (!PgDatabaseSingleton.instance) {
 			PgDatabaseSingleton.instance = new DataSource({
-				ssl: envs.NODE_ENV === 'production',
+				ssl: envs.NODE_ENV === "production",
 				extra: {
 					ssl:
-						envs.NODE_ENV === 'production'
+						envs.NODE_ENV === "production"
 							? { rejectUnauthorized: false }
 							: null,
 				},
-				type: 'postgres',
+				type: "postgres",
 				host: envs.POSTGRES_DB_HOST,
 				port: envs.POSTGRES_DB_PORT,
 				username: envs.POSTGRES_DB_USERNAME,
@@ -24,10 +24,10 @@ export class PgDatabaseSingleton {
 				entities: getMetadataArgsStorage().tables.map(
 					(tbl) => tbl.target,
 				),
-			})
+			});
 
-			this.instance.initialize()
+			this.instance.initialize();
 		}
-		return PgDatabaseSingleton.instance
+		return PgDatabaseSingleton.instance;
 	}
 }

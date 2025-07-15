@@ -1,9 +1,9 @@
-import { IService } from 'src/common/application'
-import { FindUserByEmailRequestDto } from '../dto/request/find-user-by-email-request.dto'
-import { FindUserByEmailResponseDto } from '../dto/response/find-user-by-email-response.dto'
-import { Result } from 'src/common/utils/Result'
-import { IOrmUserQueryRepository } from '../repositories/query/orm-user-query-repository.interface'
-import { UserRoleEnum } from 'src/user/domain/enums/role.enum'
+import { IService } from "src/common/application";
+import { FindUserByEmailRequestDto } from "../dto/request/find-user-by-email-request.dto";
+import { FindUserByEmailResponseDto } from "../dto/response/find-user-by-email-response.dto";
+import { Result } from "src/common/utils/Result";
+import { IOrmUserQueryRepository } from "../repositories/query/orm-user-query-repository.interface";
+import { UserRoleEnum } from "src/user/domain/enums/role.enum";
 
 export class FindUserByEmailService extends IService<
 	FindUserByEmailRequestDto,
@@ -12,7 +12,7 @@ export class FindUserByEmailService extends IService<
 	constructor(
 		private readonly ormUserQueryRepository: IOrmUserQueryRepository,
 	) {
-		super()
+		super();
 	}
 
 	async execute(
@@ -20,10 +20,10 @@ export class FindUserByEmailService extends IService<
 	): Promise<Result<FindUserByEmailResponseDto>> {
 		const userModel = await this.ormUserQueryRepository.findUserByEmail(
 			value.email,
-		)
-		if (userModel.isError) return Result.fail(userModel.Error)
+		);
+		if (userModel.isError) return Result.fail(userModel.Error);
 
-		const user = userModel.Value.user
+		const user = userModel.Value.user;
 
 		const response = new FindUserByEmailResponseDto(
 			user.Id.Value,
@@ -31,8 +31,8 @@ export class FindUserByEmailService extends IService<
 			user.Email.Value,
 			user.Phone.Value,
 			UserRoleEnum[user.Role.Value],
-		)
+		);
 
-		return Result.success(response)
+		return Result.success(response);
 	}
 }

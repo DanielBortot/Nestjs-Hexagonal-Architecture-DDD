@@ -1,4 +1,4 @@
-import { UserRoleEnum } from 'src/user/domain/enums/role.enum'
+import { UserRoleEnum } from "src/user/domain/enums/role.enum";
 
 export class FindUserByEmailResponseDto {
 	constructor(

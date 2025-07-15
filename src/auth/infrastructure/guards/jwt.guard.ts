@@ -1,13 +1,13 @@
-import { ExecutionContext, Injectable } from '@nestjs/common'
-import { AuthGuard } from '@nestjs/passport'
-import { Observable } from 'rxjs'
+import { ExecutionContext, Injectable } from "@nestjs/common";
+import { AuthGuard } from "@nestjs/passport";
+import { Observable } from "rxjs";
 
 @Injectable()
-export class JwtAuthGuard extends AuthGuard('jwt') {
+export class JwtAuthGuard extends AuthGuard("jwt") {
 	canActivate(
 		context: ExecutionContext,
 	): boolean | Promise<boolean> | Observable<boolean> {
-		return super.canActivate(context)
+		return super.canActivate(context);
 	}
 
 	handleRequest<TUser = any>(
@@ -17,8 +17,8 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
 		context: ExecutionContext,
 		status?: any,
 	): TUser {
-		const request = context.switchToHttp().getRequest()
-		request.user = user
-		return user
+		const request = context.switchToHttp().getRequest();
+		request.user = user;
+		return user;
 	}
 }

@@ -4,22 +4,22 @@ import {
 	IsOptional,
 	IsString,
 	IsUUID,
-} from 'class-validator'
+} from "class-validator";
 
 export class UpdateUserRequestInfDto {
 	@IsUUID()
 	@IsNotEmpty()
-	id: string
+	id: string;
 
 	@IsString()
 	@IsOptional()
-	name?: string
+	name?: string;
 
 	@IsEmail()
 	@IsOptional()
-	email?: string
+	email?: string;
 
 	@IsString()
 	@IsOptional()
-	phone?: string
+	phone?: string;
 }
