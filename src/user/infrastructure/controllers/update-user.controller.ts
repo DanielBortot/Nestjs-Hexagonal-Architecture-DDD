@@ -1,5 +1,12 @@
-import { Body, Controller, Inject, Patch, UseGuards } from "@nestjs/common";
-import { ApiTags } from "@nestjs/swagger";
+import {
+	Body,
+	Controller,
+	Inject,
+	Patch,
+	Req,
+	UseGuards,
+} from "@nestjs/common";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { UpdateUserRequestInfDto } from "../dto/request/update-user-request-inf.dto";
 import {
 	NestLogger,
@@ -17,6 +24,8 @@ import { UpdateUserService } from "src/user/application/services/update-user.ser
 import { OrmUserCommandRepository } from "../repositories/orm-repository/command/orm-user-command.repository";
 import { JwtAuthGuard } from "src/auth/infrastructure/guards/jwt.guard";
 import { DataSource } from "typeorm";
+import { Request } from "express";
+import { Credentials } from "src/auth/application/credentials/credentials.model";
 
 @ApiTags("User")
 @Controller("user")
@@ -38,9 +47,15 @@ export class UpdateUserController {
 		);
 	}
 
+	@ApiBearerAuth()
 	@UseGuards(JwtAuthGuard)
 	@Patch("")
-	async updateUser(@Body() body: UpdateUserRequestInfDto) {
+	async updateUser(
+		@Body() body: UpdateUserRequestInfDto,
+		@Req() req: Request,
+	) {
+		const userReq = req.user as Credentials;
+
 		const service: IService<UpdateUserRequestDto, void> =
 			new ExceptionDecorator(
 				new LoggerDecorator(
@@ -53,7 +68,15 @@ export class UpdateUserController {
 				),
 			);
 
-		const response = await service.execute(body);
-		return response.Value;
+		const request = new UpdateUserRequestDto(
+			userReq.userId,
+			body.name,
+			body.email,
+			body.phone,
+			body.role,
+		);
+
+		const response = await service.execute(request);
+		return null;
 	}
 }

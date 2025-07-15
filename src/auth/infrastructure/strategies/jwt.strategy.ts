@@ -3,6 +3,12 @@ import { PassportStrategy } from "@nestjs/passport";
 import { ExtractJwt, Strategy } from "passport-jwt";
 import { Credentials } from "src/auth/application/credentials/credentials.model";
 
+type Payload = {
+	userId: string;
+	iat: number;
+	exp: number;
+};
+
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
 	constructor() {
@@ -13,7 +19,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 		});
 	}
 
-	validate(payload: string): Credentials {
-		return { userId: payload };
+	validate(payload: Payload): Credentials {
+		return { userId: payload.userId };
 	}
 }

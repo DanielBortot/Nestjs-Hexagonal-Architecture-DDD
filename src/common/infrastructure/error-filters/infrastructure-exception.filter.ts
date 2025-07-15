@@ -20,18 +20,25 @@ export class InfrastructureExceptionFilter implements ExceptionFilter {
 		switch (errType) {
 			case InfrastructureExceptionType.BAD_REQUEST:
 				status = HttpStatus.BAD_REQUEST;
+				break;
 			case InfrastructureExceptionType.CONFLICT:
 				status = HttpStatus.CONFLICT;
+				break;
 			case InfrastructureExceptionType.NOT_FOUND:
 				status = HttpStatus.NOT_FOUND;
+				break;
 			case InfrastructureExceptionType.UNAUTHORIZED:
 				status = HttpStatus.UNAUTHORIZED;
+				break;
 			case InfrastructureExceptionType.FORBIDDEN:
 				status = HttpStatus.FORBIDDEN;
+				break;
 			case InfrastructureExceptionType.INTERNAL_SERVER_ERROR:
 				status = HttpStatus.INTERNAL_SERVER_ERROR;
+				break;
 			default:
 				status = HttpStatus.INTERNAL_SERVER_ERROR;
+				break;
 		}
 
 		const error = CustomError.create(

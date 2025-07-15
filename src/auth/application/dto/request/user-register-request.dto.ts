@@ -8,4 +8,9 @@ export class UserRegisterRequestDto {
 		public role: UserRoleEnum,
 		public password: string,
 	) {}
+
+	toJSON() {
+		const { password, ...dto } = this;
+		return dto;
+	}
 }

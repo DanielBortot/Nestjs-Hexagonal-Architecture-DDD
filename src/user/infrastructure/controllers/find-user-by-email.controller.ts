@@ -1,5 +1,5 @@
 import { Controller, Get, Inject, Query, UseGuards } from "@nestjs/common";
-import { ApiTags } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import {
 	LoggerDecorator,
 	IService,
@@ -16,6 +16,8 @@ import { FindUserByEmailRequestDto } from "src/user/application/dto/request/find
 import { FindUserByEmailResponseDto } from "src/user/application/dto/response/find-user-by-email-response.dto";
 import { JwtAuthGuard } from "src/auth/infrastructure/guards/jwt.guard";
 import { DataSource } from "typeorm";
+import { RoleAuthGuard } from "src/auth/infrastructure/guards/role.guard";
+import { UserRoleEnum } from "src/user/domain/enums/role.enum";
 
 @ApiTags("User")
 @Controller("user")
@@ -33,7 +35,8 @@ export class FindUserByEmailController {
 		);
 	}
 
-	@UseGuards(JwtAuthGuard)
+	@ApiBearerAuth()
+	@UseGuards(JwtAuthGuard, RoleAuthGuard([UserRoleEnum.ADMIN]))
 	@Get("email")
 	async findUserByEmail(@Query("email") email: string) {
 		const service: IService<

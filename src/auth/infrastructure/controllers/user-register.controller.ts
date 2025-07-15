@@ -15,7 +15,7 @@ import {
 	IService,
 	LoggerDecorator,
 } from "src/common/application";
-import { UserRegisterRequestDto } from "src/auth/application/dto/request/user-resgister-request.dto";
+import { UserRegisterRequestDto } from "src/auth/application/dto/request/user-register-request.dto";
 import { UserRegisterResponseDto } from "src/auth/application/dto/response/user-register-response.dto";
 import { UserRegisterService } from "src/auth/application/services/user-register.service";
 import { DataSource } from "typeorm";

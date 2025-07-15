@@ -3,4 +3,9 @@ export class UserLoginRequestDto {
 		public email: string,
 		public password: string,
 	) {}
+
+	toJSON() {
+		const { password, ...dto } = this;
+		return dto;
+	}
 }

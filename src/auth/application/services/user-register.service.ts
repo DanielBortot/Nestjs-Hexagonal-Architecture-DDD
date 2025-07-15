@@ -1,5 +1,5 @@
 import { IIdGenerator, IService } from "src/common/application";
-import { UserRegisterRequestDto } from "../dto/request/user-resgister-request.dto";
+import { UserRegisterRequestDto } from "../dto/request/user-register-request.dto";
 import { UserRegisterResponseDto } from "../dto/response/user-register-response.dto";
 import { Result } from "src/common/utils";
 import { IOrmUserQueryRepository } from "src/user/application/repositories/query/orm-user-query-repository.interface";

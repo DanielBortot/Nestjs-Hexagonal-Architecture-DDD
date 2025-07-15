@@ -1,6 +1,10 @@
 export class UserRegisterResponseDto {
-	constructor(
-		public userId: string,
-		public token: string,
-	) {}
+	public userId: string;
+
+	public token: string;
+
+	constructor(userId: string, token: string) {
+		this.userId = userId;
+		this.token = token;
+	}
 }

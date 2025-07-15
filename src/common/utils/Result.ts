@@ -19,13 +19,13 @@ export class Result<T> {
 	}
 
 	get Value(): T {
-		if (!this.value) throw new NotRegisteredException("No existe un value");
+		if (this.value == null)
+			throw new NotRegisteredException("There is no value");
 		return this.value;
 	}
 
 	get Error(): BaseException {
-		if (!this.error)
-			throw new NotRegisteredException("No existe ningun error");
+		if (!this.error) throw new NotRegisteredException("There is no error");
 		return this.error;
 	}
 

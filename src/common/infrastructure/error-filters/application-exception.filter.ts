@@ -20,14 +20,19 @@ export class ApplicationExceptionFilter implements ExceptionFilter {
 		switch (errType) {
 			case ApplicationExceptionType.BAD_REQUEST:
 				status = HttpStatus.BAD_REQUEST;
+				break;
 			case ApplicationExceptionType.CONFLICT:
 				status = HttpStatus.CONFLICT;
+				break;
 			case ApplicationExceptionType.UNAUTHORIZED:
 				status = HttpStatus.UNAUTHORIZED;
+				break;
 			case ApplicationExceptionType.APPLICATION_ERROR:
 				status = HttpStatus.INTERNAL_SERVER_ERROR;
+				break;
 			default:
 				status = HttpStatus.INTERNAL_SERVER_ERROR;
+				break;
 		}
 
 		const error = CustomError.create(
