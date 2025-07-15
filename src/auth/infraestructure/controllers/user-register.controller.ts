@@ -1,7 +1,6 @@
-import { Body, Controller, Post } from "@nestjs/common";
-import { JwtService } from "@nestjs/jwt";
+import { Body, Controller, Inject, Post } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
-import { PgDatabaseSingleton, NestLogger, TimerTimestamp, UuidGenerator } from "src/common/infraestructure";
+import { NestLogger, TimerTimestamp, UuidGenerator, InfProvidersEnum } from "src/common/infraestructure";
 import { OrmUserQueryRepository } from "src/user/infraestructure/repositories/orm-repository/query/orm-user-query.repository";
 import { JwtGen } from "../jwt-gen/jwt-gen";
 import { OrmUserCommandRepository } from "src/user/infraestructure/repositories/orm-repository/command/orm-user-command.repository";
@@ -10,21 +9,23 @@ import { ExceptionDecorator, IService, LoggerDecorator } from "src/common/applic
 import { UserRegisterRequestDto } from "src/auth/application/dto/request/user-resgister-request.dto";
 import { UserRegisterResponseDto } from "src/auth/application/dto/response/user-register-response.dto";
 import { UserRegisterService } from "src/auth/application/services/user-register.service";
+import { DataSource } from "typeorm";
 
 @ApiTags("Auth")
 @Controller("auth")
 export class UserRegisterController {
-    private readonly jwtGen: JwtGen;
-    private readonly ormUserQueryRepository = new OrmUserQueryRepository(PgDatabaseSingleton.getInstance());
-    private readonly ormUserCommandRepository = new OrmUserCommandRepository(PgDatabaseSingleton.getInstance());
+    private readonly ormUserQueryRepository: OrmUserQueryRepository;
+    private readonly ormUserCommandRepository: OrmUserCommandRepository;
     private readonly uuidGen = new UuidGenerator();
     private readonly logger = new NestLogger();
     private readonly timer = new TimerTimestamp();
     
     constructor(
-        private readonly jwtService: JwtService
+        @Inject(InfProvidersEnum.JwtGen) private readonly jwtGen: JwtGen,
+        @Inject(InfProvidersEnum.OrmPgDataSource) private readonly ormDatasource: DataSource
     ) {
-        this.jwtGen = new JwtGen(this.jwtService)
+        this.ormUserQueryRepository = new OrmUserQueryRepository(this.ormDatasource);
+        this.ormUserCommandRepository = new OrmUserCommandRepository(this.ormDatasource);
     }
 
     @Post("register")

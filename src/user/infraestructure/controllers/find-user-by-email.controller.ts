@@ -1,22 +1,27 @@
-import { Controller, Get, Query, UseGuards } from "@nestjs/common";
+import { Controller, Get, Inject, Query, UseGuards } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 import { LoggerDecorator, IService, ExceptionDecorator } from "src/common/application";
 import { FindUserByEmailService } from "src/user/application/services/find-user-by-email.service";
-import { PgDatabaseSingleton, NestLogger, TimerTimestamp } from "src/common/infraestructure";
+import { NestLogger, TimerTimestamp, InfProvidersEnum } from "src/common/infraestructure";
 import { OrmUserQueryRepository } from "../repositories/orm-repository/query/orm-user-query.repository";
 import { FindUserByEmailRequestDto } from "src/user/application/dto/request/find-user-by-email-request.dto";
 import { FindUserByEmailResponseDto } from "src/user/application/dto/response/find-user-by-email-response.dto";
 import { JwtAuthGuard } from "src/auth/infraestructure/guards/jwt.guard";
+import { DataSource } from "typeorm";
 
 @ApiTags("User")
 @Controller("user")
 export class FindUserByEmailController {
 
-    private readonly ormUserQueryRepository = new OrmUserQueryRepository(PgDatabaseSingleton.getInstance());
+    private readonly ormUserQueryRepository: OrmUserQueryRepository;
     private readonly logger = new NestLogger();
     private readonly timer = new TimerTimestamp();
 
-    constructor() {}
+    constructor(
+        @Inject(InfProvidersEnum.OrmPgDataSource) private readonly ormDatasource: DataSource
+    ) {
+        this.ormUserQueryRepository = new OrmUserQueryRepository(this.ormDatasource);
+    }
 
     @UseGuards(JwtAuthGuard)
     @Get("email")
