@@ -1,9 +1,8 @@
 import { CanActivate, ExecutionContext, Injectable, mixin } from "@nestjs/common";
 import { Observable } from "rxjs";
-import { PgDatabaseSingleton } from "src/common/infraestructure";
-import { IOrmUserQueryRepository } from "src/user/application/repositories/query/orm-user-query-repository.interface";
+import { PgDatabaseSingleton } from "src/common/infrastructure";
 import { UserRoleEnum } from "src/user/domain/enums/role.enum";
-import { OrmUserQueryRepository } from "src/user/infraestructure/repositories/orm-repository/query/orm-user-query.repository";
+import { OrmUserQueryRepository } from "src/user/infrastructure/repositories/orm-repository/query/orm-user-query.repository";
 
 export const RoleAuthGuard = (roles: UserRoleEnum[]) => {
     @Injectable()

@@ -1,4 +1,4 @@
-import { InfraestructureException } from "src/common/infraestructure";
+import { InfraestructureException } from "src/common/infrastructure";
 
 export class UserNotExistsException extends InfraestructureException {
     constructor() {

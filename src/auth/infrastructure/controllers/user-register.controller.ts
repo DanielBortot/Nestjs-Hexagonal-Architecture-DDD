@@ -1,9 +1,9 @@
 import { Body, Controller, Inject, Post } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
-import { NestLogger, TimerTimestamp, UuidGenerator, InfProvidersEnum } from "src/common/infraestructure";
-import { OrmUserQueryRepository } from "src/user/infraestructure/repositories/orm-repository/query/orm-user-query.repository";
+import { NestLogger, TimerTimestamp, UuidGenerator, InfProvidersEnum } from "src/common/infrastructure";
+import { OrmUserQueryRepository } from "src/user/infrastructure/repositories/orm-repository/query/orm-user-query.repository";
 import { JwtGen } from "../jwt-gen/jwt-gen";
-import { OrmUserCommandRepository } from "src/user/infraestructure/repositories/orm-repository/command/orm-user-command.repository";
+import { OrmUserCommandRepository } from "src/user/infrastructure/repositories/orm-repository/command/orm-user-command.repository";
 import { UserRegisterRequestInfDto } from "../dto/request/user-register-request-inf.dto";
 import { ExceptionDecorator, IService, LoggerDecorator } from "src/common/application";
 import { UserRegisterRequestDto } from "src/auth/application/dto/request/user-resgister-request.dto";

@@ -1,6 +1,6 @@
 import { Provider } from "@nestjs/common"
 import { JwtService } from "@nestjs/jwt"
-import { JwtGen } from "src/auth/infraestructure/jwt-gen/jwt-gen"
+import { JwtGen } from "src/auth/infrastructure/jwt-gen/jwt-gen"
 
 export const JwtGenProvider: Provider = {
     provide: 'JwtGen',

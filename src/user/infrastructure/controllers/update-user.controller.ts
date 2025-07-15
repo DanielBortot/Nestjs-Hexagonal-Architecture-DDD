@@ -1,13 +1,13 @@
 import { Body, Controller, Inject, Patch, UseGuards } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 import { UpdateUserRequestInfDto } from "../dto/request/update-user-request-inf.dto";
-import { NestLogger, TimerTimestamp, InfProvidersEnum } from "src/common/infraestructure";
+import { NestLogger, TimerTimestamp, InfProvidersEnum } from "src/common/infrastructure";
 import { OrmUserQueryRepository } from "../repositories/orm-repository/query/orm-user-query.repository";
 import { IService, LoggerDecorator, ExceptionDecorator } from "src/common/application";
 import { UpdateUserRequestDto } from "src/user/application/dto/request/update-user-request.dto";
 import { UpdateUserService } from "src/user/application/services/update-user.service";
 import { OrmUserCommandRepository } from "../repositories/orm-repository/command/orm-user-command.repository";
-import { JwtAuthGuard } from "src/auth/infraestructure/guards/jwt.guard";
+import { JwtAuthGuard } from "src/auth/infrastructure/guards/jwt.guard";
 import { DataSource } from "typeorm";
 
 @ApiTags("User")

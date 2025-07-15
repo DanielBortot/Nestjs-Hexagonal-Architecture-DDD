@@ -1,4 +1,4 @@
-import { InfraestructureException } from "src/common/infraestructure";
+import { InfraestructureException } from "src/common/infrastructure";
 import { Result } from "src/common/utils/Result";
 import { UserModel } from "src/user/application/models/user-model.type";
 import { IOrmUserQueryRepository } from "src/user/application/repositories/query/orm-user-query-repository.interface";
@@ -8,8 +8,8 @@ import { UserIdVo } from "src/user/domain/value-objects/user-id.vo";
 import { UserNameVo } from "src/user/domain/value-objects/user-name.vo";
 import { UserPhoneVo } from "src/user/domain/value-objects/user-phone.vo";
 import { UserRoleVo } from "src/user/domain/value-objects/user-role.vo";
-import { OrmUserEntity } from "src/user/infraestructure/entities/orm-entities/orm-user.entity";
-import { UserNotExistsException } from "src/user/infraestructure/infraestructure-exceptions/user-not-exists.exception";
+import { OrmUserEntity } from "src/user/infrastructure/entities/orm-entities/orm-user.entity";
+import { UserNotExistsException } from "src/user/infrastructure/infraestructure-exceptions/user-not-exists.exception";
 import { DataSource, Repository } from "typeorm";
 
 export class OrmUserQueryRepository extends Repository<OrmUserEntity> implements IOrmUserQueryRepository {

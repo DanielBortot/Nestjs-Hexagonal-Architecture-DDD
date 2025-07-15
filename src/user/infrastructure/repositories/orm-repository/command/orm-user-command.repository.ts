@@ -1,10 +1,10 @@
-import { InfraestructureException } from "src/common/infraestructure";
+import { InfraestructureException } from "src/common/infrastructure";
 import { Result } from "src/common/utils/Result";
 import { UserModel } from "src/user/application/models/user-model.type";
 import { IOrmUserCommandRepository } from "src/user/application/repositories/command/orm-user-command-repository.interface";
 import { User } from "src/user/domain/aggregate/user.aggregate";
 import { UserRoleEnum } from "src/user/domain/enums/role.enum";
-import { OrmUserEntity } from "src/user/infraestructure/entities/orm-entities/orm-user.entity";
+import { OrmUserEntity } from "src/user/infrastructure/entities/orm-entities/orm-user.entity";
 import { DataSource, Repository } from "typeorm";
 
 export class OrmUserCommandRepository extends Repository<OrmUserEntity> implements IOrmUserCommandRepository {

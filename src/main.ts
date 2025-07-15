@@ -6,7 +6,7 @@ import {
   setupCors,
   setupFilters,
   setupPipes,
-} from './common/infraestructure';
+} from './common/infrastructure';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
