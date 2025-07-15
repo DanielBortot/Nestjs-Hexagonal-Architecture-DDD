@@ -1,10 +1,10 @@
 import { IService } from "src/common/application";
 import { UpdateUserRequestDto } from "../dto/request/update-user-request.dto";
-import { Result } from "src/common/utils/Result";
+import { Result } from "src/common/utils";
 import { IOrmUserQueryRepository } from "../repositories/query/orm-user-query-repository.interface";
 import { IOrmUserCommandRepository } from "../repositories/command/orm-user-command-repository.interface";
 import { UserEmailVo } from "src/user/domain/value-objects/user-email.vo";
-import { UserEmailAlreadyExistsException } from "../application-exceptions/user-email-already-exists.exception";
+import { UserEmailAlreadyExistsException } from "../exceptions/user-email-already-exists.exception";
 import { UserNameVo } from "src/user/domain/value-objects/user-name.vo";
 import { UserPhoneVo } from "src/user/domain/value-objects/user-phone.vo";
 import { UserRoleVo } from "src/user/domain/value-objects/user-role.vo";

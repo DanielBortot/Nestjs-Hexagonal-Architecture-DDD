@@ -1,5 +1,5 @@
-import { InfraestructureException } from "src/common/infrastructure";
-import { Result } from "src/common/utils/Result";
+import { InfrastructureException } from "src/common/infrastructure";
+import { Result } from "src/common/utils";
 import { UserModel } from "src/user/application/models/user-model.type";
 import { IOrmUserQueryRepository } from "src/user/application/repositories/query/orm-user-query-repository.interface";
 import { User } from "src/user/domain/aggregate/user.aggregate";
@@ -9,7 +9,7 @@ import { UserNameVo } from "src/user/domain/value-objects/user-name.vo";
 import { UserPhoneVo } from "src/user/domain/value-objects/user-phone.vo";
 import { UserRoleVo } from "src/user/domain/value-objects/user-role.vo";
 import { OrmUserEntity } from "src/user/infrastructure/entities/orm-entities/orm-user.entity";
-import { UserNotExistsException } from "src/user/infrastructure/infraestructure-exceptions/user-not-exists.exception";
+import { UserNotExistsException } from "src/user/infrastructure/exceptions/user-not-exists.exception";
 import { DataSource, Repository } from "typeorm";
 
 export class OrmUserQueryRepository
@@ -40,7 +40,7 @@ export class OrmUserQueryRepository
 
 			return Result.success(userModel);
 		} catch (error) {
-			const err = new InfraestructureException(
+			const err = new InfrastructureException(
 				"An unexpected error has occurred",
 			);
 			err.addExceptions(error);
@@ -71,7 +71,7 @@ export class OrmUserQueryRepository
 
 			return Result.success(userModels);
 		} catch (error) {
-			const err = new InfraestructureException(
+			const err = new InfrastructureException(
 				"An unexpected error has occurred",
 			);
 			err.addExceptions(error);
@@ -99,7 +99,7 @@ export class OrmUserQueryRepository
 
 			return Result.success(userModel);
 		} catch (error) {
-			const err = new InfraestructureException(
+			const err = new InfrastructureException(
 				"An unexpected error has occurred",
 			);
 			err.addExceptions(error);
@@ -113,7 +113,7 @@ export class OrmUserQueryRepository
 
 			return Result.success(exixtsUser);
 		} catch (error) {
-			const err = new InfraestructureException(
+			const err = new InfrastructureException(
 				"An unexpected error has occurred",
 			);
 			err.addExceptions(error);

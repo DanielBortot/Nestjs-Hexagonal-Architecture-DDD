@@ -1,4 +1,4 @@
-import { Result } from "src/common/utils/Result";
+import { Result } from "src/common/utils";
 import { UserModel } from "../../models/user-model.type";
 
 export interface IOrmUserQueryRepository {

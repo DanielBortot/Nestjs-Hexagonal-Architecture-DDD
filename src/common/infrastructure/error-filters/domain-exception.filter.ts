@@ -16,9 +16,9 @@ export class DomainExceptionFilter implements ExceptionFilter {
 		const error = CustomError.create(
 			exception.message,
 			exception.constructor.name,
-			HttpStatus.INTERNAL_SERVER_ERROR,
+			HttpStatus.BAD_REQUEST,
 		);
 
-		response.status(HttpStatus.INTERNAL_SERVER_ERROR).json(error);
+		response.status(HttpStatus.BAD_REQUEST).json(error);
 	}
 }

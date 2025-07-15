@@ -1,7 +1,7 @@
 import { IService } from "src/common/application";
 import { FindUserByEmailRequestDto } from "../dto/request/find-user-by-email-request.dto";
 import { FindUserByEmailResponseDto } from "../dto/response/find-user-by-email-response.dto";
-import { Result } from "src/common/utils/Result";
+import { Result } from "src/common/utils";
 import { IOrmUserQueryRepository } from "../repositories/query/orm-user-query-repository.interface";
 import { UserRoleEnum } from "src/user/domain/enums/role.enum";
 

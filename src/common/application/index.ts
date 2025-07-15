@@ -9,3 +9,4 @@ export { ILogger } from "./logger/logger.interface";
 export { BaseRequest } from "./service/dto/request/base-request.abstract";
 export { IService } from "./service/service.abstract";
 export { ITimer } from "./timer/timer.interface";
+export { ApplicationExceptionType } from "./application-exception/enum/application-exception-type.enum";

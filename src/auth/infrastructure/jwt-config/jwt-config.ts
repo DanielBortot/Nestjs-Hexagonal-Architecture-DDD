@@ -1,6 +1,6 @@
 import { JwtModule } from "@nestjs/jwt";
 
 export const setupJwt = JwtModule.register({
-	secret: "hola",
+	secret: "secret",
 	signOptions: { expiresIn: "8h" },
 });

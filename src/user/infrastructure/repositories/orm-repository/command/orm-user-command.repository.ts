@@ -1,5 +1,5 @@
-import { InfraestructureException } from "src/common/infrastructure";
-import { Result } from "src/common/utils/Result";
+import { InfrastructureException } from "src/common/infrastructure";
+import { Result } from "src/common/utils";
 import { UserModel } from "src/user/application/models/user-model.type";
 import { IOrmUserCommandRepository } from "src/user/application/repositories/command/orm-user-command-repository.interface";
 import { User } from "src/user/domain/aggregate/user.aggregate";
@@ -30,7 +30,7 @@ export class OrmUserCommandRepository
 			await this.save(ormUser);
 			return Result.success(undefined);
 		} catch (error) {
-			const err = new InfraestructureException(
+			const err = new InfrastructureException(
 				"An unexpected error has occurred",
 			);
 			err.addExceptions(error);
@@ -43,7 +43,7 @@ export class OrmUserCommandRepository
 			await this.delete(user.Id.Value);
 			return Result.success(undefined);
 		} catch (error) {
-			const err = new InfraestructureException(
+			const err = new InfrastructureException(
 				"An unexpected error has occurred",
 			);
 			err.addExceptions(error);
