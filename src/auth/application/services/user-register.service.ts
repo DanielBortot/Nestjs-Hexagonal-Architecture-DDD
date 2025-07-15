@@ -14,6 +14,7 @@ import { UserRoleVo } from "src/user/domain/value-objects/user-role.vo";
 import { UserModel } from "src/user/application/models/user-model.type";
 import { ITokenGen } from "../token-gen/token-gen.interface";
 import { Credentials } from "../credentials/credentials.model";
+import { IEncryptor } from "../encryptor/encryptor.interface";
 
 export class UserRegisterService extends IService<UserRegisterRequestDto, UserRegisterResponseDto> {
     
@@ -21,7 +22,8 @@ export class UserRegisterService extends IService<UserRegisterRequestDto, UserRe
         private readonly ormUserQueryRepository: IOrmUserQueryRepository,
         private readonly ormUserCommandRepository: IOrmUserCommandRepository,
         private readonly idGenerator: IIdGenerator,
-        private readonly tokenGen: ITokenGen
+        private readonly tokenGen: ITokenGen,
+        private readonly encryptor: IEncryptor
     ) {
         super();
     }
@@ -42,9 +44,11 @@ export class UserRegisterService extends IService<UserRegisterRequestDto, UserRe
             UserRoleVo.create(value.role.toString())
         );
 
+        const hash = await this.encryptor.hash(value.password)
+
         const userModel: UserModel = {
             user: newUser,
-            password: value.password
+            password: hash
         }
 
         await this.ormUserCommandRepository.saveUser(userModel);

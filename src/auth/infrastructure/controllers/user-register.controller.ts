@@ -10,6 +10,7 @@ import { UserRegisterRequestDto } from "src/auth/application/dto/request/user-re
 import { UserRegisterResponseDto } from "src/auth/application/dto/response/user-register-response.dto";
 import { UserRegisterService } from "src/auth/application/services/user-register.service";
 import { DataSource } from "typeorm";
+import { BcryptEncryptor } from "../encryptor/bcrypt";
 
 @ApiTags("Auth")
 @Controller("auth")
@@ -19,6 +20,7 @@ export class UserRegisterController {
     private readonly uuidGen = new UuidGenerator();
     private readonly logger = new NestLogger();
     private readonly timer = new TimerTimestamp();
+    private readonly encryptor = new BcryptEncryptor();
     
     constructor(
         @Inject(InfProvidersEnum.JwtGen) private readonly jwtGen: JwtGen,
@@ -38,7 +40,8 @@ export class UserRegisterController {
                     this.ormUserQueryRepository,
                     this.ormUserCommandRepository,
                     this.uuidGen,
-                    this.jwtGen
+                    this.jwtGen,
+                    this.encryptor
                 ),
                 this.logger,
                 this.timer

@@ -7,12 +7,14 @@ import { ITokenGen } from "../token-gen/token-gen.interface";
 import { UserInvalidCredentialsException } from "../exceptions/user-invalid-credentials.exception";
 import { Credentials } from "../credentials/credentials.model";
 import { UserRoleEnum } from "src/user/domain/enums/role.enum";
+import { IEncryptor } from "../encryptor/encryptor.interface";
 
 export class UserLoginService extends IService<UserLoginRequestDto, UserLoginResponseDto> {
     
     constructor(
         private readonly ormUserQueryRepository: IOrmUserQueryRepository,
-        private readonly tokenGen: ITokenGen
+        private readonly tokenGen: ITokenGen,
+        private readonly encryptor: IEncryptor
     ) {
         super()
     }
@@ -22,7 +24,10 @@ export class UserLoginService extends IService<UserLoginRequestDto, UserLoginRes
         const userModel = await this.ormUserQueryRepository.findUserByEmail(value.email);
 
         if (userModel.isError) return Result.fail(new UserInvalidCredentialsException());
-        if (userModel.Value.password !== value.password) return Result.fail(new UserInvalidCredentialsException());
+
+        const passwordCompared = await this.encryptor.comparePassword(value.password, userModel.Value.password)
+
+        if (!passwordCompared) return Result.fail(new UserInvalidCredentialsException());
 
         const user = userModel.Value.user;
 

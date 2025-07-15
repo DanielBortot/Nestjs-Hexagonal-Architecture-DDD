@@ -9,6 +9,7 @@ import { UserLoginRequestDto } from "src/auth/application/dto/request/user-login
 import { UserLoginResponseDto } from "src/auth/application/dto/response/user-login-response.dto";
 import { UserLoginService } from "src/auth/application/services/user-login.service";
 import { DataSource } from "typeorm";
+import { BcryptEncryptor } from "../encryptor/bcrypt";
 
 @ApiTags("Auth")
 @Controller("auth")
@@ -17,6 +18,7 @@ export class UserLoginController {
     private readonly ormUserQueryRepository: OrmUserQueryRepository;
     private readonly logger = new NestLogger();
     private readonly timer = new TimerTimestamp();
+    private readonly encryptor = new BcryptEncryptor();
 
     constructor(
         @Inject(InfProvidersEnum.JwtGen) private readonly jwtGen: JwtGen,
@@ -33,7 +35,8 @@ export class UserLoginController {
             new LoggerDecorator(
                 new UserLoginService(
                     this.ormUserQueryRepository,
-                    this.jwtGen
+                    this.jwtGen,
+                    this.encryptor
                 ),
                 this.logger,
                 this.timer
