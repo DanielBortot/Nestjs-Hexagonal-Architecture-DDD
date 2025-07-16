@@ -6,10 +6,6 @@ on:
     types:
       - completed
 
-permissions:
-  contents: read
-  packages: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -34,7 +30,6 @@ jobs:
           DOCKER_USER: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           NEW_VERSION: ${{ steps.version.outputs.version  }}
-          DOCKERHUB_REPO: ${{ secrets.DOCKERHUB_REPO }}
         run: |
           echo "Trying Login ..."
           echo "New version $NEW_VERSION uploading"
@@ -44,12 +39,14 @@ jobs:
       - name: Build Docker Image
         env:
           NEW_VERSION: ${{ steps.version.outputs.version  }}
+          DOCKERHUB_REPO: ${{ secrets.DOCKERHUB_REPO }}
         run: |
           docker build -t $DOCKERHUB_REPO:$NEW_VERSION .
           docker build -t $DOCKERHUB_REPO:latest .
       - name: Push Docker Image
         env:
           NEW_VERSION: ${{ steps.version.outputs.version  }}
+          DOCKERHUB_REPO: ${{ secrets.DOCKERHUB_REPO }}
         run: |
           docker push $DOCKERHUB_REPO:$NEW_VERSION
-          docker push $DOCKERHUB_REPO:latest
+          docker push darkchanga/nestjs-hexagonal-template:latest
