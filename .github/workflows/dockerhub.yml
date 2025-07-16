@@ -30,6 +30,7 @@ jobs:
           DOCKER_USER: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           NEW_VERSION: ${{ steps.version.outputs.version  }}
+          DOCKERHUB_REPO: ${{ secrets.DOCKERHUB_REPO }}
         run: |
           echo "Trying Login ..."
           echo "New version $NEW_VERSION uploading"
@@ -40,11 +41,11 @@ jobs:
         env:
           NEW_VERSION: ${{ steps.version.outputs.version  }}
         run: |
-          docker build -t darkchanga/nestjs-hexagonal-template:$NEW_VERSION .
-          docker build -t darkchanga/nestjs-hexagonal-template:latest .
+          docker build -t $DOCKERHUB_REPO:$NEW_VERSION .
+          docker build -t $DOCKERHUB_REPO:latest .
       - name: Push Docker Image
         env:
           NEW_VERSION: ${{ steps.version.outputs.version  }}
         run: |
-          docker push darkchanga/nestjs-hexagonal-template:$NEW_VERSION
-          docker push darkchanga/nestjs-hexagonal-template:latest
+          docker push $DOCKERHUB_REPO:$NEW_VERSION
+          docker push $DOCKERHUB_REPO:latest
