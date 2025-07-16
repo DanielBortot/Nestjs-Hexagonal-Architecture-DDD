@@ -15,8 +15,9 @@ async function bootstrap() {
 
 	setupPipes(app);
 	setupFilters(app);
-	setupSwagger(app);
 	setupCors(app);
+
+	if (process.env.NODE_ENV !== "production") setupSwagger(app);
 
 	await app.listen(process.env.PORT ?? 3000);
 }

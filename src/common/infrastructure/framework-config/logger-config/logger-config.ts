@@ -29,7 +29,6 @@ export class FileLogger extends ConsoleLogger {
 		});
 
 		process.on("unhandledRejection", (reason: any) => {
-			console.log("hola global");
 			if (reason instanceof AggregateError) {
 				const errors = reason.errors.map((err: any) => {
 					return (

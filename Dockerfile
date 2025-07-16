@@ -7,13 +7,13 @@ RUN corepack enable
 FROM base AS dev-deps
 
 WORKDIR /app
-COPY package.json package.json
+COPY package.json pnpm-lock.yaml ./
 RUN pnpm install
 
 FROM base AS prod-deps
 
 WORKDIR /app
-COPY package.json package.json
+COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --prod
 
 FROM base AS builder
